@@ -114,7 +114,7 @@ document.querySelectorAll(".art").forEach(b=>b.onclick=()=>{setArt(b.dataset.k);
 $("#art").onchange=e=>e.target.value?setArt(e.target.value.toLowerCase()):0;
 $("#dob").onchange=e=>{const b=new Date(e.target.value),n=new Date();let a=n.getFullYear()-b.getFullYear();if(n<new Date(n.getFullYear(),b.getMonth(),b.getDate()))a--;
  const u=a<18;g.hidden=!u;["gName","gRel","gPhone"].forEach(i=>$("#"+i).required=u)};
-const ENDPOINT="";
+const ENDPOINT="https://horai-relay.horaient.workers.dev";
 async function save(d){if(ENDPOINT){try{const r=await fetch(ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(d)});if(r.ok)return true}catch(e){}}
 try{const db=await window.claude.use("db"),us=await window.claude.use("user");if(!db||!us)return false;
  await db.collection("applications").doc(await us.id()).set(d);return true}catch(e){return false}}
