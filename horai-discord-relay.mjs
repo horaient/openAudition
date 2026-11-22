@@ -2,6 +2,8 @@
 // Settings > Variables and Secrets:
 //   DISCORD_WEBHOOK  (secret)  the Discord webhook URL, never put it in the page
 //   ALLOWED_ORIGIN   (text)    your site, e.g. https://horai.example
+if (!d.fullName || !d.email || !d.link1 || !d.dob) return new Response("Missing fields", { status: 422, headers: cors });
+const minor = Number.isNaN(age) || age < 18;
 const ART = { performing: 0xE5601A, visual: 0x5E2BA8, production: 0x0E5A3B };
 const cut = (v, n = 700) => { v = String(v ?? "").trim(); return v ? (v.length > n ? v.slice(0, n - 1) + "…" : v) : "—"; };
 const F = (name, v, inline = false) => ({ name, value: cut(v), inline });
